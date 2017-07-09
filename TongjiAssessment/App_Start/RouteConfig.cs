@@ -13,9 +13,23 @@ namespace TongjiAssessment
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(null, "",
+                 new { controller = "Comment", action = "List", category = (string)null, page = 1 }
+             );
+            routes.MapRoute(null, "Page{page}",
+                new { controller = "Comment", action = "List", category = (string)null },
+                new { page = @"\d+" }
+            );
+            routes.MapRoute(null, "{category}",
+                new { controller = "Comment", action = "List", page = 1 }
+            );
+            routes.MapRoute(null,"{category}/Page{page}",
+                new { controller = "Comment", action = "List"},
+                new {page = @"\d+"}
+            );
             routes.MapRoute(
-               null,
-               url: "{controller}/{action}"
+              null,
+              url: "{controller}/{action}"
            );
             routes.MapRoute(
                 name: "Default",

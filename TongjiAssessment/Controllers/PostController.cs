@@ -22,7 +22,7 @@ namespace TongjiAssessment.Controllers
             PostListViewModel model = new PostListViewModel
             {
                 Posts = repository.Posts
-                .OrderBy(p => p.Id)
+                .OrderBy(p => p.Post_id)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
                 PagingInfo = new PagingInfo

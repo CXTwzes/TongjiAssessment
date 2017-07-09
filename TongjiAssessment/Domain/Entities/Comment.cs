@@ -17,7 +17,8 @@ namespace TongjiAssessment.Domain.Entities
         public string Course_id { get; set; }
         public string Ins_id { get; set; }
         public string Ins_name { get; set; }
-        public string username { get; set; }
+        public string Username { get; set; }
+        public string Category { get; set; }
 
         public int Support { get; set; }
         public Tongji_user Tongji_user { get; set; }

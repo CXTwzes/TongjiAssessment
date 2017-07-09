@@ -24,7 +24,7 @@ namespace TongjiAssessment.Controllers
             InstructorListViewModel model = new InstructorListViewModel
             {
                 Instructors = repository.Instructors
-                .OrderBy(p => p.Id)
+                .OrderBy(p => p.Ins_id)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
                 PagingInfo = new PagingInfo

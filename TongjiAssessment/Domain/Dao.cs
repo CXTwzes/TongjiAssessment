@@ -10,7 +10,7 @@ namespace TongjiAssessment.Domain
 {
     public static class Dao
     {
-        private static string connectionString = "User Id=c##assessment;Password=123456;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=orcl)))";
+        private static string connectionString = "User Id=c##tongji;Password=123456;Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=orcl)))";
        
         //获取课程信息
         public static List<Course> getCourseList()
@@ -196,7 +196,37 @@ namespace TongjiAssessment.Domain
             return list;
 
         }
+        public static List<string> getCategoryList()
+        {
+            List<string> categories = new List<string>();
+            OracleConnection conn = new OracleConnection(connectionString);
+            try
+            {
+                conn.Open();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select dept_name from department";
+                OracleDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    categories.Add(reader.GetString(0));
 
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.Write("eeeeeeee" + e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return categories;
+        }
         //获取楼层信息
         public static List<Floor> getFloorList()
         {

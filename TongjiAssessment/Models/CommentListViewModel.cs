@@ -9,6 +9,7 @@ namespace TongjiAssessment.Models
     public class CommentListViewModel
     {
         public IEnumerable<Comment> Comments { get; set; }
+        public IEnumerable<string> Categories { get; set; }
 
         public PagingInfo PagingInfo { get; set; }
 

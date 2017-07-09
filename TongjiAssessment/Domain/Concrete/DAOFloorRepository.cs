@@ -13,7 +13,7 @@ namespace TongjiAssessment.Domain.Concrete
         {
             get
             {
-                return Dao.getFloorRecordList();
+                return Dao.getFloorList();
             }
         }
     }

@@ -228,6 +228,7 @@
     <Compile Include="Domain\Entities\Floor.cs" />
     <Compile Include="Domain\Entities\Instructor.cs" />
     <Compile Include="Domain\Entities\Post.cs" />
+    <Compile Include="Domain\Entities\Tongji.cs" />
     <Compile Include="Domain\Entities\Tongji_user.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
