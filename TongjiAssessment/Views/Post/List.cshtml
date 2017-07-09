@@ -1,0 +1,135 @@
+﻿@model TongjiAssessment.Models.PostListViewModel
+
+@{
+    //ViewBag.Title = "讨论";
+    var num = Model.Posts.Count();
+}
+
+@*<h2>共有 @num 条讨论</h2>*@
+<div>
+    <div class="row" style="padding-top:60px">
+        <div class="col-md-1" style="position:fixed">
+            <a class="btn btn-danger btn-block" style="margin-bottom:5px;">选修类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">基础类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">体育类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">艺术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">理工类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">医学类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">技术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">基础类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">体育类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">艺术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">理工类</a>
+
+
+        </div>
+        <div class="col-md-11" style="margin-left:100px">
+            @*@{
+                    var size = Model.Count();
+                    <h2>热门评课</h2>
+                    <h4>共有 @size 门课程</h4>
+                }*@
+            <div>
+                @{
+                    var index = 0;
+                }
+                @foreach (var p in Model.Posts)
+                {
+                    index++;
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row" style="height:50px">
+                                <div class="col-md-2">
+                                    <div class="row">
+                                        <div class="col-md-3 text-center">
+                                            <img class="img-circle" src="~/images/@p.Image" height="45" width="45" />
+                                            @*<h5><strong style="color:white" class="text-center">@p.Name</strong></h5>*@
+                                        </div>
+                                        <div class="col-md-8 text-left" style="padding-top:5px; padding-left:20px">
+                                            <p><strong>@p.Name</strong><br />@p.Date.Substring(10, 6) </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <h4>标题： @p.Title</h4>
+                            <p>
+                                @p.Content
+                            </p>
+                            <div style="padding-bottom:0em">
+                                <div class="pull-right" id="support_@index">
+                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    <span id="support_num">@p.Support</span>
+                                </div>
+                                <div class="pull-right" style="margin-right:10px" id="comment_@index">
+                                    <span class="glyphicon glyphicon glyphicon-comment"></span>
+                                    <span>1</span>
+                                </div>
+                              
+                            </div>
+                            <!-- <br />
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="评论......">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">提交</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div>
+
+                    </div>
+                }
+            </div>
+
+            <div class="btn-proup text-center pager" style="padding-top:10px; padding-bottom:10px">
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        $("#support_1").click(function () {
+            var number = $(this).children("#support_num").text();
+            $(this).children("#support_num").text(parseInt(number) + 1);
+
+        });
+        $("#support_2").click(function () {
+            var number = $(this).children("#support_num").text();
+            $(this).children("#support_num").text(parseInt(number) + 1);
+
+        });
+        $("#support_3").click(function () {
+            var number = $(this).children("#support_num").text();
+            $(this).children("#support_num").text(parseInt(number) + 1);
+
+        });
+        $("#support_4").click(function () {
+            var number = $(this).children("#support_num").text();
+            $(this).children("#support_num").text(parseInt(number) + 1);
+
+        });
+
+        //$("#comment_1").click(function () {
+
+        //});
+        //$("#comment_2").click(function () {
+        //    var number = $(this).children("#support_num").text();
+        //    $(this).children("#support_num").text(parseInt(number) + 1);
+
+        //});
+        //$("#comment_3").click(function () {
+        //    var number = $(this).children("#support_num").text();
+        //    $(this).children("#support_num").text(parseInt(number) + 1);
+
+        //});
+        //$("#comment_4").click(function () {
+
+        //});
+    });
+
+</script>

@@ -1,0 +1,58 @@
+﻿@model TongjiAssessment.Models.CommentListViewModel
+
+@{
+//var num = Model.CommentRecords.Count();
+}
+
+<div>
+    <div class="row" style="padding-top:60px">
+        <div class="col-md-1" style="position:fixed">
+            <a class="btn btn-danger btn-block" style="margin-bottom:5px;">选修类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">基础类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">体育类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">艺术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">理工类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">医学类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">技术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">基础类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">体育类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">艺术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">科学类</a>
+        </div>
+        <div class="col-md-8" style="margin-left:100px">
+            <div class="list-group">
+                @foreach (var p in Model.Comments)
+                {
+                    <div class=" well well-sm">
+                        <div class="row">
+                            <div class="col-sm-1 col-xs-2">
+                                <img class="img-circle center-block" src="~/images/@*@p.Image*@" height="64" width="64" />
+                            </div>
+
+                            <div class="col-sm-11 col-xs-10" style="padding-left:20px">
+                                <a href="#"></a> 点评了 <a href="#">@*@p.CourseName*@</a> (@*@p.Instructor*@)  <span class="pull-right"> @*@p.Date.Substring(10)*@</span>
+
+                                <p style="padding-top:10px"></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+             <div class="pager" style="padding-top:10px; padding-bottom:10px">
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+            </div>
+        </div>
+        <div class="col-md-3">
+            @*@{
+            <h2>热门评课</h2>
+            }*@
+        </div>
+    </div>
+</div>
+
+
+
+   
+    
+
+       

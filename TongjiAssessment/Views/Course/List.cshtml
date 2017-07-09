@@ -1,0 +1,52 @@
+﻿@model TongjiAssessment.Models.CourseListViewModel
+
+@*@{
+    ViewBag.Title = "课程";
+
+}
+@{
+    var size = Model.Count();
+    <h4>共有 @size 门课程</h4>
+}*@
+<div>
+    <div class="row" style="padding-top:60px">
+        <div class="col-md-1" style="position:fixed">
+            <a class="btn btn-danger btn-block" style="margin-bottom:5px;">选修类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">基础类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">体育类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">艺术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">理工类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">医学类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">技术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">基础类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">体育类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">艺术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">理工类</a>
+
+
+        </div>
+        <div class="col-md-11" style="margin-left:100px">
+            @*@{
+                    var size = Model.Count();
+                    <h2>热门评课</h2>
+                    <h4>共有 @size 门课程</h4>
+                }*@
+            <div class="list-group">
+                @foreach (var c in Model.Courses)
+                {
+                    <div class="well">
+                        <h3>
+                            <strong>@c.Title</strong>
+                            <span class="pull-right label label-primary">学分: @c.Credits</span>
+                        </h3>
+                        <h4>开课学院: @c.Dept_name 学科类型: @c.Category</h4>
+
+                    </div>
+                }
+            </div>
+            <div class="btn-proup text-center pager" style="padding-top:10px; padding-bottom:10px">
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+            </div>
+        </div>
+    </div>
+</div>

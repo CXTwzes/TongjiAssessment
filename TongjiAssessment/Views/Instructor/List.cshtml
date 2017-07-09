@@ -1,0 +1,53 @@
+﻿@model TongjiAssessment.Models.InstructorListViewModel
+@*@{
+    ViewBag.Title = "教师";
+}
+
+<h2>Instructor</h2>*@
+<div>
+    <div class="row" style="padding-top:60px">
+        <div class="col-md-1" style="position:fixed">
+            <a class="btn btn-danger btn-block" style="margin-bottom:5px;">选修类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">基础类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">体育类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">艺术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">理工类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">医学类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">技术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">基础类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">体育类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">艺术类</a>
+            <a class="btn btn-default btn-block" style="margin-bottom:5px;">理工类</a>
+
+
+        </div>
+        <div class="col-md-11" style="margin-left:100px">
+            @*@{
+                    var size = Model.Count();
+                    <h2>热门评课</h2>
+                    <h4>共有 @size 门课程</h4>
+                }*@
+            <div>
+                @foreach (var c in Model.Instructors)
+                {
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-xs-2 text-center">
+                                <img class="img-circle" src="~/images/@c.Image" height="64" width="64" />
+                                <h4 class="text-center">@c.Name</h4>
+                            </div>
+                            <div class="col-xs-10">
+                                <h5>个人邮箱： @c.Homepage</h5>
+                                <p>个人简介： @c.Introduction</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="btn-proup text-center pager" style="padding-top:10px; padding-bottom:10px">
+                @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+            </div>
+        </div>
+    </div>
+</div>
+
